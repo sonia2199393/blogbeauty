@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Beauty Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="header">
+
+    <!-- НАЗВАНИЕ -->
+    <div class="title">
+        <a href="{{ url_for('index') }}">BEAUTY BLOG</a>
+    </div>
+
+    <!-- ТАБЫ -->
+    <nav class="tabs">
+        {% for section in sections %}
+            <a class="tab"
+               href="{{ url_for('section_page', section_slug=section.slug) }}">
+                {{ section.name }}
+            </a>
+        {% endfor %}
+    </nav>
+
+    <!-- КНОПКА -->
+    <div class="add-wrapper">
+        <a class="add-btn" href="{{ url_for('add_post') }}">
+            + Новий пост
+        </a>
+    </div>
+
+</header>
+
+<main class="main">
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

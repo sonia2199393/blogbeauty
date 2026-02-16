@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Новий пост{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+    <h2 class="page-title">✨ Створити пост</h2>
+
+    <form method="post" class="post-form">
+
+        <textarea name="text" placeholder="Текст посту..." required></textarea>
+
+        <input type="text" name="image" placeholder="Посилання на зображення">
+
+        <select name="section" required>
+            {% for section in sections %}
+                <option value="{{ section.id }}">{{ section.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="button">💖 Опублікувати</button>
+
+    </form>
+</div>
+
+{% endblock %}
